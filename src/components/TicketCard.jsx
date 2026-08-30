@@ -77,6 +77,8 @@ export default function TicketCard({ ticket }) {
           ))}
         </div>
 
+
+
         <div className="ticket-bottom">
           <span>
             <b>{ticket.quantity}</b> seats left
