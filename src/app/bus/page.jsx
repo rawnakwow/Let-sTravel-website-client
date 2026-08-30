@@ -1,0 +1,3 @@
+import TravelModePage from "@/components/TravelModePage";
+export const metadata = { title: "Bus Tickets", description: "Browse verified bus journeys and approved coach tickets with Let'sTravel." };
+export default function BusPage() { return <TravelModePage mode="Bus" apiType="Bus" title="Road trips, better organized." intro="Compare verified coaches, route details, comfort perks and departure times without jumping between counters." image="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1800&q=88" points={["Compare approved intercity coach listings.", "See remaining ticket quantity before booking.", "Request seats first and pay only after vendor acceptance."]} />; }
