@@ -1,0 +1,3 @@
+import TravelModePage from "@/components/TravelModePage";
+export const metadata = { title: "Plane Tickets", description: "Browse verified domestic flight tickets and approved air journeys with Let'sTravel." };
+export default function PlanePage() { return <TravelModePage mode="Plane" apiType="Plane" title="Fly farther. Plan faster." intro="A clean home for domestic flight options with transparent pricing, availability and departure information." image="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1800&q=88" points={["Keep domestic flight options in one focused view.", "Sort approved fares from low to high or high to low.", "Track accepted bookings before secure payment."]} />; }
