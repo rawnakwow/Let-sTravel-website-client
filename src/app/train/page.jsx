@@ -1,0 +1,3 @@
+import TravelModePage from "@/components/TravelModePage";
+export const metadata = { title: "Train Tickets", description: "Browse verified rail journeys and approved train tickets with Let'sTravel." };
+export default function TrainPage() { return <TravelModePage mode="Train" apiType="Train" title="Rail travel, with room to breathe." intro="Find verified train journeys, compare route details and organize every booking from one calm dashboard." image="https://images.unsplash.com/photo-1473445361085-b9a07f55608b?auto=format&fit=crop&w=1800&q=88" points={["Browse approved rail listings by route.", "See departure date, time and seat availability at a glance.", "Receive clear pending, accepted, rejected and paid statuses."]} />; }
