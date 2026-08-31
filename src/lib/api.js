@@ -4,10 +4,6 @@ export const API_URL =
   process.env.NEXT_PUBLIC_API_URL ||
   "http://localhost:5000/api";
 
-/* =========================
-   GET BETTER AUTH JWT
-========================= */
-
 export async function getAccessToken() {
   try {
     const { data, error } =
@@ -18,7 +14,6 @@ export async function getAccessToken() {
         "JWT token error:",
         error
       );
-
       return null;
     }
 
@@ -32,11 +27,6 @@ export async function getAccessToken() {
     return null;
   }
 }
-
-/* =========================
-   API FETCH
-========================= */
-
 export async function apiFetch(
   path,
   options = {}
@@ -79,9 +69,10 @@ export async function apiFetch(
     }
   );
 
-  const payload = await response
-    .json()
-    .catch(() => ({}));
+  const payload =
+    await response
+      .json()
+      .catch(() => ({}));
 
   if (!response.ok) {
     console.error(
@@ -98,43 +89,4 @@ export async function apiFetch(
   }
 
   return payload;
-}
-
-/* =========================
-   IMGBB IMAGE UPLOAD
-========================= */
-
-export async function uploadImage(file) {
-  const key =
-    process.env
-      .NEXT_PUBLIC_IMGBB_API_KEY;
-
-  if (!key) {
-    throw new Error(
-      "NEXT_PUBLIC_IMGBB_API_KEY is not configured"
-    );
-  }
-
-  const body = new FormData();
-
-  body.append("image", file);
-
-  const response = await fetch(
-    `https://api.imgbb.com/1/upload?key=${key}`,
-    {
-      method: "POST",
-      body,
-    }
-  );
-
-  const result =
-    await response.json();
-
-  if (!result.success) {
-    throw new Error(
-      "Image upload failed"
-    );
-  }
-
-  return result.data.display_url;
 }
