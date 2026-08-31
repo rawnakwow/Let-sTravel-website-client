@@ -1,33 +1,140 @@
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+import { authClient } from "@/lib/auth-client";
+
+export const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  "http://localhost:5000/api";
+
+/* =========================
+   GET BETTER AUTH JWT
+========================= */
 
 export async function getAccessToken() {
-  const response = await fetch("/api/access-token", { cache: "no-store" });
-  if (!response.ok) return null;
-  return (await response.json()).token;
+  try {
+    const { data, error } =
+      await authClient.token();
+
+    if (error) {
+      console.error(
+        "JWT token error:",
+        error
+      );
+
+      return null;
+    }
+
+    return data?.token || null;
+  } catch (error) {
+    console.error(
+      "Failed to get access token:",
+      error
+    );
+
+    return null;
+  }
 }
 
-export async function apiFetch(path, options = {}) {
-  const token = options.public ? null : await getAccessToken();
-  const response = await fetch(`${API_URL}${path}`, {
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
-      ...options.headers,
-    },
-  });
-  const payload = await response.json().catch(() => ({}));
-  if (!response.ok) throw new Error(payload.message || "Request failed");
+/* =========================
+   API FETCH
+========================= */
+
+export async function apiFetch(
+  path,
+  options = {}
+) {
+  const {
+    public: isPublic = false,
+    ...fetchOptions
+  } = options;
+
+  const token = isPublic
+    ? null
+    : await getAccessToken();
+
+  const headers = new Headers(
+    fetchOptions.headers || {}
+  );
+
+  if (
+    fetchOptions.body &&
+    !(fetchOptions.body instanceof FormData)
+  ) {
+    headers.set(
+      "Content-Type",
+      "application/json"
+    );
+  }
+
+  if (token) {
+    headers.set(
+      "Authorization",
+      `Bearer ${token}`
+    );
+  }
+
+  const response = await fetch(
+    `${API_URL}${path}`,
+    {
+      ...fetchOptions,
+      headers,
+    }
+  );
+
+  const payload = await response
+    .json()
+    .catch(() => ({}));
+
+  if (!response.ok) {
+    console.error(
+      "API request failed:",
+      response.status,
+      path,
+      payload
+    );
+
+    throw new Error(
+      payload.message ||
+        `Request failed with status ${response.status}`
+    );
+  }
+
   return payload;
 }
 
+/* =========================
+   IMGBB IMAGE UPLOAD
+========================= */
+
 export async function uploadImage(file) {
-  const key = process.env.NEXT_PUBLIC_IMGBB_API_KEY;
-  if (!key) throw new Error("NEXT_PUBLIC_IMGBB_API_KEY is not configured");
+  const key =
+    process.env
+      .NEXT_PUBLIC_IMGBB_API_KEY;
+
+  if (!key) {
+    throw new Error(
+      "NEXT_PUBLIC_IMGBB_API_KEY is not configured"
+    );
+  }
+
   const body = new FormData();
+
   body.append("image", file);
-  const response = await fetch(`https://api.imgbb.com/1/upload?key=${key}`, { method: "POST", body });
-  const result = await response.json();
-  if (!result.success) throw new Error("Image upload failed");
+
+  const response = await fetch(
+    `https://api.imgbb.com/1/upload?key=${key}`,
+    {
+      method: "POST",
+      body,
+    }
+  );
+
+  const result =
+    await response.json();
+
+  if (!result.success) {
+    throw new Error(
+      "Image upload failed"
+    );
+  }
+
   return result.data.display_url;
 }
