@@ -201,7 +201,7 @@ export default function ProfilePage() {
             {/* PROFILE AVATAR */}
             <div className="profile-main-avatar">
               {profile.profileImage ? (
-                <img
+                <image 
                   src={profile.profileImage}
                   alt={
                     profile.name ||
