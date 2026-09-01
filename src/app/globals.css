@@ -1264,6 +1264,23 @@ th { color: var(--muted); font-size: .75rem; letter-spacing: .08em; text-transfo
   object-fit: cover;
   object-position: center;
 }
+
+
+.vendor-ticket-image {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  background: #f4f3ef;
+}
+
+.vendor-ticket-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
 @media(max-width:1050px){.desktop-auth{display:none}.menu-toggle{display:grid}.nav-links{display:none;position:absolute;inset:74px 0 auto;align-items:stretch;flex-direction:column;padding:1rem;background:var(--surface);border-bottom:1px solid var(--line)}.nav-links.is-open{display:flex}.nav-links a{padding:.55rem .7rem}.mobile-auth{display:grid;gap:.5rem;border-top:1px solid var(--line);padding-top:.7rem}.hero-slide-layout{grid-template-columns:1fr .72fr;gap:2rem}}
 @media(max-width:850px){.hero-slider{min-height:850px}.hero-slide-layout{grid-template-columns:1fr;align-content:center;padding:4rem 0 10rem}.hero-slider h1{font-size:clamp(3.8rem,11vw,6rem)}.journey-glass-card{max-width:520px}.hero-slider-controls{grid-template-columns:1fr auto}.hero-progress{display:none}.mode-card-1,.mode-card-2,.mode-card-3,.mode-card-4{grid-column:span 6;grid-row:span 1}.mode-page-hero-inner{grid-template-columns:1fr}.mode-page-stat{width:max-content}}
 @media(max-width:620px){.hero-slider{min-height:880px}.hero-slide-layout{padding-top:3rem}.hero-slider h1{font-size:3.65rem}.hero-slider-copy>p{font-size:.93rem}.hero-search-dark{grid-template-columns:1fr}.hero-search-dark label{border-right:0;border-bottom:1px solid var(--line)}.hero-search-dark button{min-height:48px}.hero-quick-links{align-items:flex-start;flex-direction:column;gap:.7rem}.hero-quick-links>span{padding-left:0;border-left:0}.journey-glass-card{display:none}.hero-slider-controls{bottom:1.2rem;grid-template-columns:1fr}.hero-arrows{display:none}.hero-mode-tabs{width:100%;justify-content:space-between}.hero-mode-tabs button{flex:1;justify-content:center;padding:.6rem .4rem}.hero-mode-tabs button span{display:none}.mode-bento{display:grid;grid-template-columns:1fr;grid-auto-rows:320px}.mode-card-1,.mode-card-2,.mode-card-3,.mode-card-4{grid-column:auto;grid-row:auto}.mode-search-form{grid-template-columns:1fr}.mode-search-form label{border-right:0;border-bottom:1px solid var(--line)}.mode-point-grid{grid-template-columns:1fr}.mode-results-head{align-items:stretch;flex-direction:column}.mode-sort{width:100%}.mode-page-stat{min-width:0;width:100%}}

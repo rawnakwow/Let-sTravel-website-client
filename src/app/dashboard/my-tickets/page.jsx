@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import SafeTicketImage from "@/components/SafeTicketImage";
 import { useEffect, useState } from "react";
 import { Edit3, MapPin, Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
@@ -127,12 +127,14 @@ export default function MyTicketsPage() {
                 key={ticket._id}
               >
                 <div>
-                  <Image
-                    src={ticket.image}
-                    alt={ticket.title}
-                    fill
-                    sizes="33vw"
-                  />
+                 <div className="vendor-ticket-image">
+  <SafeTicketImage
+    src={ticket.image}
+    alt={ticket.title}
+    transportType={ticket.transportType}
+    className="vendor-ticket-img"
+  />
+</div>
 
                   <span className="status">
                     {ticket.verificationStatus}

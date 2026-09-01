@@ -6,31 +6,21 @@ export const API_URL =
 
 export async function getAccessToken() {
   try {
-    const { data, error } =
-      await authClient.token();
+    const { data, error } = await authClient.token();
 
     if (error) {
-      console.error(
-        "JWT token error:",
-        error
-      );
+      console.error("JWT token error:", error);
       return null;
     }
 
     return data?.token || null;
   } catch (error) {
-    console.error(
-      "Failed to get access token:",
-      error
-    );
-
+    console.error("Failed to get access token:", error);
     return null;
   }
 }
-export async function apiFetch(
-  path,
-  options = {}
-) {
+
+export async function apiFetch(path, options = {}) {
   const {
     public: isPublic = false,
     ...fetchOptions
@@ -48,10 +38,7 @@ export async function apiFetch(
     fetchOptions.body &&
     !(fetchOptions.body instanceof FormData)
   ) {
-    headers.set(
-      "Content-Type",
-      "application/json"
-    );
+    headers.set("Content-Type", "application/json");
   }
 
   if (token) {
@@ -69,10 +56,9 @@ export async function apiFetch(
     }
   );
 
-  const payload =
-    await response
-      .json()
-      .catch(() => ({}));
+  const payload = await response
+    .json()
+    .catch(() => ({}));
 
   if (!response.ok) {
     console.error(
