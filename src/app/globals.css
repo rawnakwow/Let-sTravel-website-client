@@ -2205,6 +2205,1035 @@ th { color: var(--muted); font-size: .75rem; letter-spacing: .08em; text-transfo
 .ticket-card .ticket-bottom > span {
   color: #454d49;
 }
+
+/* =====================================================
+   USER NAVBAR + PROFILE DROPDOWN FIX
+===================================================== */
+
+.site-nav {
+  position: sticky !important;
+  top: 0 !important;
+
+  z-index: 9999 !important;
+
+  width: 100%;
+
+  overflow: visible !important;
+  isolation: isolate;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--surface) 94%,
+      transparent
+    );
+
+  border-bottom:
+    1px solid var(--line);
+
+  box-shadow:
+    0 4px 18px
+    rgba(15, 35, 29, 0.04);
+}
+
+.nav-inner {
+  position: relative;
+
+  overflow: visible !important;
+}
+
+.nav-actions {
+  position: relative;
+
+  overflow: visible !important;
+}
+
+/* ========================================
+   PROFILE WRAPPER
+======================================== */
+
+.profile-menu {
+  position: relative;
+
+  z-index: 10020;
+
+  flex: 0 0 auto;
+}
+
+/* ========================================
+   PROFILE BUTTON
+======================================== */
+
+.profile-trigger {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 0.55rem;
+
+  min-height: 44px;
+
+  padding:
+    0.3rem
+    0.72rem
+    0.3rem
+    0.3rem;
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius: 999px;
+
+  outline: none;
+
+  color: var(--ink);
+  background: var(--surface);
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+.profile-trigger:hover {
+  border-color:
+    color-mix(
+      in srgb,
+      var(--brand) 35%,
+      var(--line)
+    );
+}
+
+.profile-trigger:focus-visible {
+  outline: none;
+
+  box-shadow:
+    0 0 0 3px
+    color-mix(
+      in srgb,
+      var(--brand) 15%,
+      transparent
+    );
+}
+
+.profile-trigger.is-open {
+  border-color:
+    color-mix(
+      in srgb,
+      var(--brand) 45%,
+      var(--line)
+    );
+}
+
+.profile-trigger-name {
+  max-width: 115px;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  font-size: 0.92rem;
+  font-weight: 650;
+}
+
+.profile-chevron {
+  flex-shrink: 0;
+
+  transition:
+    transform 0.18s ease;
+}
+
+.profile-trigger.is-open
+.profile-chevron {
+  transform: rotate(180deg);
+}
+
+/* ========================================
+   PROFILE DROPDOWN
+======================================== */
+
+.profile-pop {
+  position: absolute !important;
+
+  top: calc(100% + 10px) !important;
+  right: 0 !important;
+  left: auto !important;
+
+  z-index: 10050 !important;
+
+  width: 180px;
+  min-width: 180px;
+
+  margin: 0 !important;
+
+  padding: 7px;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius: 14px;
+
+  background:
+    var(--surface);
+
+  box-shadow:
+    0 18px 45px
+    rgba(15, 35, 29, 0.16);
+}
+
+/* dropdown little arrow */
+
+.profile-pop::before {
+  content: "";
+
+  position: absolute;
+
+  top: -6px;
+  right: 24px;
+
+  width: 10px;
+  height: 10px;
+
+  background:
+    var(--surface);
+
+  border-top:
+    1px solid
+    var(--line);
+
+  border-left:
+    1px solid
+    var(--line);
+
+  transform:
+    rotate(45deg);
+}
+
+/* ITEMS */
+
+.profile-pop a,
+.profile-pop button {
+  position: relative;
+
+  z-index: 1;
+
+  display: flex;
+
+  width: 100%;
+
+  align-items: center;
+
+  padding:
+    10px
+    12px;
+
+  margin: 0;
+
+  border: 0;
+  border-radius: 9px;
+
+  color: var(--ink);
+
+  background: transparent;
+
+  text-align: left;
+
+  font-size: 14px;
+  font-weight: 550;
+
+  cursor: pointer;
+
+  box-shadow: none;
+}
+
+.profile-pop a:hover,
+.profile-pop button:hover {
+  color: var(--brand);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--brand) 8%,
+      var(--surface)
+    );
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 760px) {
+  .profile-trigger {
+    width: 44px;
+    height: 44px;
+
+    padding: 4px;
+
+    justify-content: center;
+  }
+
+  .profile-trigger-name,
+  .profile-trigger
+  .profile-chevron {
+    display: none !important;
+  }
+
+  .profile-pop {
+    top:
+      calc(100% + 8px)
+      !important;
+
+    right: 0 !important;
+
+    width: 170px;
+    min-width: 170px;
+  }
+}
+/* =====================================================
+   LET'STRAVEL NAVBAR - FINAL USER SIDE FIX
+===================================================== */
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.site-nav {
+  position: sticky !important;
+  top: 0 !important;
+
+  z-index: 10000 !important;
+
+  width: 100%;
+
+  overflow: visible !important;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--surface) 96%,
+      transparent
+    );
+
+  border-bottom:
+    1px solid
+    var(--line);
+
+  backdrop-filter:
+    blur(18px);
+
+  -webkit-backdrop-filter:
+    blur(18px);
+
+  box-shadow:
+    0 3px 18px
+    rgba(15, 35, 29, 0.035);
+}
+
+/* =====================================================
+   INNER
+===================================================== */
+
+.nav-inner {
+  position: relative;
+
+  min-height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content:
+    space-between;
+
+  gap: 18px;
+
+  overflow: visible !important;
+}
+
+/* =====================================================
+   BRAND
+===================================================== */
+
+.nav-brand {
+  flex-shrink: 0;
+}
+
+/* =====================================================
+   LINKS
+===================================================== */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+
+  min-width: 0;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding:
+    8px
+    10px;
+
+  border-radius: 10px;
+
+  color: var(--muted);
+
+  font-size: 14px;
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  text-decoration: none;
+
+  transition:
+    color 0.18s ease,
+    background 0.18s ease;
+}
+
+.nav-link:hover {
+  color:
+    var(--brand);
+
+  background:
+    var(--surface2);
+}
+
+.nav-link.active {
+  color:
+    var(--brand);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--brand) 6%,
+      var(--surface)
+    );
+}
+
+/* =====================================================
+   NAV ICON
+===================================================== */
+
+.nav-link-icon {
+  width: 26px;
+  height: 26px;
+
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  border-radius: 8px;
+
+  color:
+    currentColor;
+
+  background:
+    var(--surface2);
+}
+
+/* Bus */
+
+.nav-link[data-mode="bus"]
+.nav-link-icon {
+  color: #078672;
+
+  background: #e9f6f2;
+}
+
+/* Plane */
+
+.nav-link[data-mode="plane"]
+.nav-link-icon {
+  color: #347bc5;
+
+  background: #eaf3fd;
+}
+
+/* Train */
+
+.nav-link[data-mode="train"]
+.nav-link-icon {
+  color: #c97924;
+
+  background: #fff2e6;
+}
+
+/* Cruise */
+
+.nav-link[data-mode="cruise"]
+.nav-link-icon {
+  color: #526cb8;
+
+  background: #edf0fb;
+}
+
+/* =====================================================
+   RIGHT SIDE
+===================================================== */
+
+.nav-actions {
+  position: relative;
+
+  z-index: 10020;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  flex-shrink: 0;
+
+  overflow: visible !important;
+}
+
+/* =====================================================
+   PROFILE MENU WRAPPER
+===================================================== */
+
+.profile-menu {
+  position: relative;
+
+  z-index: 10030;
+
+  flex-shrink: 0;
+
+  overflow: visible !important;
+}
+
+/* =====================================================
+   PROFILE TRIGGER
+===================================================== */
+
+.profile-trigger {
+  position: relative;
+
+  min-height: 46px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding:
+    4px
+    13px
+    4px
+    5px;
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius: 999px;
+
+  color:
+    var(--ink);
+
+  background:
+    var(--surface);
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  outline: none;
+
+  box-shadow: none;
+
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+.profile-trigger:hover {
+  border-color:
+    color-mix(
+      in srgb,
+      var(--brand) 35%,
+      var(--line)
+    );
+
+  background:
+    var(--surface2);
+}
+
+.profile-trigger.is-open {
+  border-color:
+    color-mix(
+      in srgb,
+      var(--brand) 50%,
+      var(--line)
+    );
+
+  box-shadow:
+    0 0 0 3px
+    color-mix(
+      in srgb,
+      var(--brand) 8%,
+      transparent
+    );
+}
+
+.profile-trigger:focus-visible {
+  box-shadow:
+    0 0 0 3px
+    color-mix(
+      in srgb,
+      var(--brand) 14%,
+      transparent
+    );
+}
+
+/* =====================================================
+   USER NAME
+===================================================== */
+
+.profile-trigger-name {
+  max-width: 115px;
+
+  overflow: hidden;
+
+  color:
+    var(--ink);
+
+  font-size: 14px;
+  font-weight: 600;
+
+  line-height: 1;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* =====================================================
+   CHEVRON
+===================================================== */
+
+.profile-chevron {
+  flex-shrink: 0;
+
+  color:
+    var(--muted);
+
+  transition:
+    transform 0.18s ease;
+}
+
+.profile-trigger.is-open
+.profile-chevron {
+  transform:
+    rotate(180deg);
+}
+
+/* =====================================================
+   PROFILE DROPDOWN
+===================================================== */
+
+.profile-pop {
+  position: absolute !important;
+
+  top:
+    calc(100% + 9px)
+    !important;
+
+  right: 0 !important;
+  left: auto !important;
+
+  z-index: 10050 !important;
+
+  width: 176px;
+  min-width: 176px;
+
+  margin: 0 !important;
+
+  padding: 7px;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius: 14px;
+
+  background:
+    var(--surface);
+
+  box-shadow:
+    0 20px 50px
+    rgba(15, 35, 29, 0.16);
+}
+
+/* =====================================================
+   DROPDOWN ITEMS
+===================================================== */
+
+.profile-pop a,
+.profile-pop button {
+  position: relative;
+
+  display: flex;
+
+  width: 100%;
+
+  align-items: center;
+
+  margin: 0;
+
+  padding:
+    11px
+    12px;
+
+  border: 0;
+
+  border-radius: 9px;
+
+  color:
+    var(--ink);
+
+  background:
+    transparent;
+
+  font-family: inherit;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  line-height: 1.3;
+
+  text-align: left;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  box-shadow: none !important;
+
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
+}
+
+.profile-pop a:hover,
+.profile-pop button:hover {
+  color:
+    var(--brand);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--brand) 8%,
+      var(--surface)
+    );
+}
+
+/* =====================================================
+   AUTH LINKS
+===================================================== */
+
+.desktop-auth {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.desktop-auth > a:first-child {
+  font-weight: 700;
+}
+
+/* =====================================================
+   MOBILE TOGGLE
+===================================================== */
+
+.menu-toggle {
+  display: none;
+
+  width: 42px;
+  height: 42px;
+
+  place-items: center;
+
+  padding: 0;
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius: 12px;
+
+  color:
+    var(--ink);
+
+  background:
+    var(--surface);
+
+  cursor: pointer;
+}
+
+.mobile-auth {
+  display: none;
+}
+
+/* =====================================================
+   DARK MODE
+===================================================== */
+
+[data-theme="dark"]
+.site-nav {
+  background:
+    rgba(
+      16,
+      26,
+      22,
+      0.96
+    );
+}
+
+[data-theme="dark"]
+.profile-trigger {
+  background:
+    #18251f;
+}
+
+[data-theme="dark"]
+.profile-trigger:hover {
+  background:
+    #1d3028;
+}
+
+[data-theme="dark"]
+.profile-pop {
+  background:
+    #17251f;
+
+  border-color:
+    rgba(
+      255,
+      255,
+      255,
+      0.09
+    );
+
+  box-shadow:
+    0 20px 50px
+    rgba(
+      0,
+      0,
+      0,
+      0.38
+    );
+}
+
+[data-theme="dark"]
+.profile-pop a,
+[data-theme="dark"]
+.profile-pop button {
+  color:
+    #edf4f1;
+}
+
+[data-theme="dark"]
+.profile-pop a:hover,
+[data-theme="dark"]
+.profile-pop button:hover {
+  color:
+    #6ed0ba;
+
+  background:
+    #20372e;
+}
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (
+  max-width: 1050px
+) {
+  .nav-link {
+    padding:
+      8px
+      7px;
+
+    font-size: 13px;
+  }
+
+  .nav-link-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .profile-trigger-name {
+    max-width: 85px;
+  }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (
+  max-width: 850px
+) {
+  .nav-inner {
+    min-height: 68px;
+  }
+
+  /* ---------------------------------
+     MOBILE NAV DRAWER
+  --------------------------------- */
+
+  .nav-links {
+    position: absolute;
+
+    top: 100%;
+    left: 12px;
+    right: 12px;
+
+    z-index: 10040;
+
+    display: none;
+
+    padding: 10px;
+
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 3px;
+
+    border:
+      1px solid
+      var(--line);
+
+    border-radius: 16px;
+
+    background:
+      var(--surface);
+
+    box-shadow:
+      0 20px 45px
+      rgba(
+        15,
+        35,
+        29,
+        0.16
+      );
+  }
+
+  .nav-links.is-open {
+    display: flex;
+  }
+
+  .nav-link {
+    width: 100%;
+
+    padding:
+      10px
+      11px;
+  }
+
+  /* ---------------------------------
+     MOBILE USER PROFILE
+  --------------------------------- */
+
+  .profile-trigger {
+    width: 44px;
+    height: 44px;
+
+    min-height: 44px;
+
+    justify-content: center;
+
+    padding: 4px;
+  }
+
+  .profile-trigger-name,
+  .profile-chevron {
+    display: none;
+  }
+
+  .profile-pop {
+    top:
+      calc(100% + 8px)
+      !important;
+
+    right: 0 !important;
+
+    width: 170px;
+    min-width: 170px;
+  }
+
+  /* ---------------------------------
+     MENU BUTTON
+  --------------------------------- */
+
+  .menu-toggle {
+    display: grid;
+  }
+
+  .desktop-auth {
+    display: none;
+  }
+
+  .mobile-auth {
+    display: grid;
+
+    gap: 8px;
+
+    margin-top: 5px;
+
+    padding-top: 10px;
+
+    border-top:
+      1px solid
+      var(--line);
+  }
+
+  .mobile-auth > a {
+    width: 100%;
+
+    padding:
+      10px
+      11px;
+
+    border-radius: 9px;
+  }
+}
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (
+  max-width: 520px
+) {
+  .nav-inner {
+    gap: 7px;
+  }
+
+  .nav-actions {
+    gap: 7px;
+  }
+
+  .profile-pop {
+    right: -2px !important;
+  }
+}
 @media(max-width:1050px){.desktop-auth{display:none}.menu-toggle{display:grid}.nav-links{display:none;position:absolute;inset:74px 0 auto;align-items:stretch;flex-direction:column;padding:1rem;background:var(--surface);border-bottom:1px solid var(--line)}.nav-links.is-open{display:flex}.nav-links a{padding:.55rem .7rem}.mobile-auth{display:grid;gap:.5rem;border-top:1px solid var(--line);padding-top:.7rem}.hero-slide-layout{grid-template-columns:1fr .72fr;gap:2rem}}
 @media(max-width:850px){.hero-slider{min-height:850px}.hero-slide-layout{grid-template-columns:1fr;align-content:center;padding:4rem 0 10rem}.hero-slider h1{font-size:clamp(3.8rem,11vw,6rem)}.journey-glass-card{max-width:520px}.hero-slider-controls{grid-template-columns:1fr auto}.hero-progress{display:none}.mode-card-1,.mode-card-2,.mode-card-3,.mode-card-4{grid-column:span 6;grid-row:span 1}.mode-page-hero-inner{grid-template-columns:1fr}.mode-page-stat{width:max-content}}
 @media(max-width:620px){.hero-slider{min-height:880px}.hero-slide-layout{padding-top:3rem}.hero-slider h1{font-size:3.65rem}.hero-slider-copy>p{font-size:.93rem}.hero-search-dark{grid-template-columns:1fr}.hero-search-dark label{border-right:0;border-bottom:1px solid var(--line)}.hero-search-dark button{min-height:48px}.hero-quick-links{align-items:flex-start;flex-direction:column;gap:.7rem}.hero-quick-links>span{padding-left:0;border-left:0}.journey-glass-card{display:none}.hero-slider-controls{bottom:1.2rem;grid-template-columns:1fr}.hero-arrows{display:none}.hero-mode-tabs{width:100%;justify-content:space-between}.hero-mode-tabs button{flex:1;justify-content:center;padding:.6rem .4rem}.hero-mode-tabs button span{display:none}.mode-bento{display:grid;grid-template-columns:1fr;grid-auto-rows:320px}.mode-card-1,.mode-card-2,.mode-card-3,.mode-card-4{grid-column:auto;grid-row:auto}.mode-search-form{grid-template-columns:1fr}.mode-search-form label{border-right:0;border-bottom:1px solid var(--line)}.mode-point-grid{grid-template-columns:1fr}.mode-results-head{align-items:stretch;flex-direction:column}.mode-sort{width:100%}.mode-page-stat{min-width:0;width:100%}}
