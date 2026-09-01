@@ -372,10 +372,13 @@ function TicketsContent() {
               }
             />
 
-            <button type="submit">
-              <Search size={18} />
-              Search
-            </button>
+           <button
+  type="submit"
+  className="ticket-search-submit"
+>
+  <Search size={18} />
+  Search
+</button>
           </form>
         </div>
       </section>
