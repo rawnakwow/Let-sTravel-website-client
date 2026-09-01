@@ -35,7 +35,10 @@ const icons = {
 };
 
 /* =====================================================
-   TRANSPORT NAVIGATION
+   OTHER TRANSPORT LINKS
+
+   Used only at the bottom "Explore more" section.
+   The top transport navigation has been removed.
 ===================================================== */
 
 const transportLinks = [
@@ -276,6 +279,7 @@ export default function TravelModePage({
     }
 
     setLoading(true);
+
     setPage(nextPage);
 
     setTimeout(() => {
@@ -289,7 +293,7 @@ export default function TravelModePage({
   }
 
   /* ===================================================
-     ACTIVE TRANSPORT
+     CHECK CURRENT TRANSPORT
   =================================================== */
 
   function isActiveTransport(
@@ -297,6 +301,13 @@ export default function TravelModePage({
   ) {
     if (
       mode === "Cruise" &&
+      label === "Cruise"
+    ) {
+      return true;
+    }
+
+    if (
+      apiType === "Launch" &&
       label === "Cruise"
     ) {
       return true;
@@ -336,7 +347,9 @@ export default function TravelModePage({
               {title}
             </h1>
 
-            <p>{intro}</p>
+            <p>
+              {intro}
+            </p>
           </div>
 
           <div className="mode-page-stat glass">
@@ -362,48 +375,9 @@ export default function TravelModePage({
         </div>
       </section>
 
-      {/* ===============================================
-          TRANSPORT NAVIGATION
-      =============================================== */}
-
-      <section className="mode-transport-nav-section">
-        <div className="container">
-          <div className="mode-transport-nav">
-            {transportLinks.map(
-              ({
-                label,
-                href,
-                icon: NavIcon,
-              }) => {
-                const active =
-                  isActiveTransport(
-                    label
-                  );
-
-                return (
-                  <Link
-                    key={label}
-                    href={href}
-                    className={`mode-transport-link ${
-                      active
-                        ? "active"
-                        : ""
-                    }`}
-                  >
-                    <NavIcon
-                      size={17}
-                    />
-
-                    <span>
-                      {label}
-                    </span>
-                  </Link>
-                );
-              }
-            )}
-          </div>
-        </div>
-      </section>
+      {/* =================================================
+          TOP TRANSPORT NAVIGATION REMOVED
+      ================================================= */}
 
       {/* ===============================================
           SEARCH AREA
@@ -420,7 +394,9 @@ export default function TravelModePage({
             {/* FROM */}
 
             <label>
-              <span>From</span>
+              <span>
+                From
+              </span>
 
               <input
                 name="from"
@@ -435,7 +411,9 @@ export default function TravelModePage({
             {/* TO */}
 
             <label>
-              <span>To</span>
+              <span>
+                To
+              </span>
 
               <input
                 name="to"
@@ -465,8 +443,7 @@ export default function TravelModePage({
               FEATURE POINTS
           =========================================== */}
 
-          {points.length >
-            0 && (
+          {points.length > 0 && (
             <div className="mode-point-grid">
               {points.map(
                 (
@@ -506,7 +483,7 @@ export default function TravelModePage({
       >
         <div className="container">
           {/* ===========================================
-              HEADER
+              RESULT HEADER
           =========================================== */}
 
           <div className="mode-results-head">
@@ -694,7 +671,7 @@ export default function TravelModePage({
               </div>
 
               {/* =======================================
-                  OTHER TRANSPORTS
+                  EXPLORE OTHER TRANSPORTS
               ======================================= */}
 
               <div className="mode-more-transports">
@@ -755,7 +732,9 @@ export default function TravelModePage({
             =========================================== */
 
             <div className="empty">
-              <Icon size={34} />
+              <Icon
+                size={34}
+              />
 
               <h3>
                 No matching{" "}
